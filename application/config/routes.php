@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/userguide3/general/routing.html
+|	https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -43,12 +43,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | This is not exactly a route, but allows you to automatically route
 | controller and method names that contain dashes. '-' isn't a valid
 | class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes with
-| underscores in the controller and method URI segments.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
 |
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = '';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/* API */
+$route['product'] = 'api/Product';
+$route['product/(:any)'] = 'api/Product/$1';
+$route['product/(:num)']['PUT'] = 'api/Product/$1';
+$route['product/(:num)']['DELETE'] = 'api/Product/$1';
+$route['register'] = 'api/User/register';
+$route['login'] = 'api/User/login';
+$route['logout'] = 'api/User/logout';
+$route['reGenToken'] = 'api/Token/reGenToken';
